@@ -7,19 +7,17 @@ import java.util.ArrayList;
 
 public class Utilities {
     public static AnimalNameListsWrapper createAnimalNameLists(String filePath) {
-// Create ArrayLists for each species
         ArrayList<String> hyenaNameList = new ArrayList<>();
         ArrayList<String> lionNameList = new ArrayList<>();
         ArrayList<String> tigerNameList = new ArrayList<>();
         ArrayList<String> bearNameList = new ArrayList<>();
-// Try-with-resources to automatically close the reader
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
-        {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             ArrayList<String> currentList = null;
+
             while ((line = reader.readLine()) != null) {
-                line = line.trim(); // Trim any leading or trailing spaces
-// Check for the species names and assign the appropriate list
+                line = line.trim();
                 if (line.equals("Hyena Names:")) {
                     currentList = hyenaNameList;
                 } else if (line.equals("Lion Names:")) {
@@ -28,22 +26,17 @@ public class Utilities {
                     currentList = tigerNameList;
                 } else if (line.equals("Bear Names:")) {
                     currentList = bearNameList;
-                } else if (!line.isEmpty()) {
-// Add names to the current list
+                } else if (!line.isEmpty() && currentList != null) {
                     String[] names = line.split(",\\s*");
                     for (String name : names) {
-                        if (currentList != null) {
-                            currentList.add(name);
-                        }
+                        currentList.add(name);
                     }
                 }
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the file: " +
-                    e.getMessage());
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
         }
-// Return the wrapper object containing all lists
-        return new AnimalNameListsWrapper(hyenaNameList, lionNameList,
-                tigerNameList, bearNameList);
+
+        return new AnimalNameListsWrapper(hyenaNameList, lionNameList, tigerNameList, bearNameList);
     }
 }

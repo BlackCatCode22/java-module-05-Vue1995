@@ -7,6 +7,7 @@ public class Bear extends sheena.zoo.com.Animal {
 
     // Create a constructor
     public Bear(String someName) {
+        super();
         numOfBears++;
     }
 }
