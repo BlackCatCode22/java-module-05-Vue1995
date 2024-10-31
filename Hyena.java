@@ -1,21 +1,23 @@
 package sheena.zoo.com;
 
 public class Hyena extends sheena.zoo.com.Animal {
-    // Create a static int that keeps track of the number of hyenas created
+    // Create a static int that keep track of the number of hyenas created.
     static int numOfHyenas = 0;
 
-    // Create a constructor
-    public Hyena(String hy01, int i, String zig, String s, String brownSpots, String male, int i1, String laugh, String fromSanDiegoZoo) {
+    // Create a constructor.
+    public Hyena(){
+        super();
         numOfHyenas++;
     }
 
-    // Constructor that accepts all attributes
-    public Hyena(String animalID, int age, String animalName, String animalBirthdate,
-                 String animalColor, String sex, int weight, String laugh,
-                 String animalOrigin, String arrivalDate) {
-        super(sex, age, weight, animalName, animalID, animalBirthdate, animalColor, animalOrigin);
+    // Create a constructor that will have all the fields I want.
+    public Hyena(String sex, int age, int weight, String animalName,
+                 String animalID, String animalBirthDate, String animalColor,
+                 String animalOrigin){
+        super(sex, age, weight, animalName, animalID, animalBirthDate, animalColor, animalOrigin);
+        numOfHyenas++;
     }
 
 
-}
 
+}
